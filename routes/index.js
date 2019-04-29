@@ -6,6 +6,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/newsapi', indexcontroller.apirequest);
+router.get('/fancy', indexcontroller.fancyapirequest);
 
 module.exports = router;
