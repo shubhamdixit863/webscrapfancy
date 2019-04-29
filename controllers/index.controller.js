@@ -2,14 +2,15 @@ const Request = require("request");
 const cheerio = require('cheerio');
 const puppeteer = require('puppeteer');
 var phantom = require("phantom");
+
 var api ={
 
     apirequest:(req,res)=>{
         (async () => {
             const browser = await puppeteer.launch();
             const page = await browser.newPage();
-            let eventid=29253476; // pass eventid from request
-            let marketid=1.158147115; // pass marketid from request
+            let eventid=req.params.eventid; // pass eventid from request
+            let marketid=req.params.marketid; // pass marketid from request
             let url=`https://www.skyexchange.com/exchange/member/fullMarket?eventType=4&eventId=${eventid}&marketId=${marketid}`;
           
             await page.goto(url);
@@ -152,13 +153,13 @@ var api ={
         const page = await instance.createPage();
         await page.on('onResourceRequested', function(requestData) {
           console.info('Requesting', requestData.url);
-        });
-       
-        let eventid=29253476; // pass eventid from request
-        let marketid=1.158147115; // pass marketid from request
+        });        
+        let eventid=req.params.eventid; // pass eventid from request
+        let marketid=req.params.marketid; // pass marketid from request
         let url=`https://www.skyexchange.com/exchange/member/fullMarket?eventType=4&eventId=${eventid}&marketId=${marketid}`;
       
         const status = await page.open(url);
+        console.log(status);
         const content = await page.property('#fancyBetMarketList');
         console.log(content);
        
