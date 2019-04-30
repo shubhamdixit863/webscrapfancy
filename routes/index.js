@@ -6,6 +6,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/fancy/:eventid/:marketid', indexcontroller.fancyapirequest);
+router.get('/fancy/:eventid/:marketid', indexcontroller.apirequest);
 
 module.exports = router;

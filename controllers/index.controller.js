@@ -159,7 +159,7 @@ var api ={
         let url=`https://www.skyexchange.com/exchange/member/fullMarket?eventType=4&eventId=${eventid}&marketId=${marketid}`;
       
         const status = await page.open(url);
-        console.log(status);
+        //console.log(status);
         const content = await page.property('#fancyBetMarketList');
         console.log(content);
        
